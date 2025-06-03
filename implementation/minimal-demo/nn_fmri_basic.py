@@ -98,6 +98,7 @@ class NeuralFMRI:
         
         # Collect activations across batches
         with torch.no_grad():
+            self.activations.clear() # Clear activations once before batch processing
             for batch_idx, (data, _) in enumerate(dataloader):
                 if batch_idx >= max_batches:
                     break
@@ -110,8 +111,6 @@ class NeuralFMRI:
                 # Store activations for analysis
                 for layer_name, activation in self.activations.items():
                     layer_activations[layer_name].append(activation)
-                
-                self.activations.clear()  # Free memory
                 
                 if batch_idx % 5 == 0:
                     print(f"Processed batch {batch_idx + 1}/{max_batches}")
@@ -135,7 +134,10 @@ class NeuralFMRI:
         self.spatial_patterns = spatial_results
         
         print(f"Spatial analysis complete. Analyzed {len(spatial_results)} layers.")
-        return spatial_results
+        return {
+            "status": "success" if spatial_results else "failed",
+            "spatial_patterns": spatial_results
+        }
     
     def _perform_spatial_grid_analysis(self, activations: torch.Tensor, layer_name: str) -> Dict[str, Any]:
         """
@@ -183,6 +185,7 @@ class NeuralFMRI:
         
         # Extract spatial statistics
         spatial_stats = self._extract_spatial_statistics(grid_results, density_map)
+        print(f"  _perform_spatial_grid_analysis spatial_stats keys: {list(spatial_stats.keys()) if spatial_stats else 'No keys'}") # Debug print
         
         return {
             "layer_name": layer_name,
@@ -196,7 +199,8 @@ class NeuralFMRI:
                 "mean_activation": float(torch.mean(torch.abs(activations_reshaped))),
                 "max_activation": float(torch.max(torch.abs(activations_reshaped))),
                 "activation_sparsity": float(torch.mean((torch.abs(activations_reshaped) < 1e-6).float()))
-            }
+            },
+            "status": "success" if spatial_stats else "failed"
         }
     
     def _partition_into_grids(self, activations: torch.Tensor, grid_dims: Tuple[int, int, int], 
@@ -449,73 +453,49 @@ class NeuralFMRI:
                 "Complete dual-modal integration for cross-validation",
                 "Validate on CIFAR-10 (same data as NN-EEG)",
                 "Extend validation to additional datasets and architectures"
-            ]
+            ],
+            "metrics": {
+                "total_layers_analyzed": len(self.spatial_patterns),
+                "mean_activation_density": np.mean(list(self.density_maps.values())) if self.density_maps else 0.0,
+                "max_zeta_score": max(score for scores_by_layer in self.zeta_scores.values() for score in scores_by_layer.values()) if self.zeta_scores else 0.0
+            },
+            "status": "success" if self.spatial_patterns else "failed"
         }
         
         return report
     
     def cleanup(self):
         """
-        Remove all hooks to prevent memory leaks.
+        Clean up hooks and free memory.
         """
         for hook in self.hooks:
             hook.remove()
         self.hooks.clear()
         self.activations.clear()
+        self.activation_grids.clear()
+        self.density_maps.clear()
+        self.zeta_scores.clear()
+        self.spatial_patterns.clear()
         print("NN-fMRI cleanup complete.")
 
 
 # Utility functions for integration with NN-EEG
 def create_dual_modal_analyzer(model: nn.Module, grid_size: Tuple[int, int, int] = (8, 8, 4)):
     """
-    Create NN-fMRI analyzer ready for dual-modal integration.
-    
-    Args:
-        model: PyTorch model to analyze
-        grid_size: Spatial grid configuration
-        
-    Returns:
-        Configured NN-fMRI analyzer
+    Factory function to create a NeuralFMRI instance.
     """
     return NeuralFMRI(model, grid_size)
 
 
 def validate_cifar10_spatial_analysis(model: nn.Module, dataloader, max_batches: int = 10):
     """
-    Quick validation function for CIFAR-10 spatial analysis.
-    
-    Based on paper results section target for same dataset validation.
+    Simple validation function for NN-fMRI on CIFAR-10 data.
     """
-    print("Starting CIFAR-10 spatial validation...")
-    
-    # Initialize analyzer
-    analyzer = NeuralFMRI(model, grid_size=(8, 8, 4))
-    
-    try:
-        # Perform spatial analysis
-        spatial_results = analyzer.analyze_spatial_patterns(dataloader, max_batches)
-        
-        # Generate report
-        report = analyzer.generate_spatial_report()
-        
-        print("CIFAR-10 spatial validation successful!")
-        print(f"Analyzed {len(spatial_results)} layers")
-        
-        return {
-            "status": "success",
-            "spatial_results": spatial_results,
-            "report": report,
-            "analyzer": analyzer
-        }
-        
-    except Exception as e:
-        print(f"Validation failed: {str(e)}")
-        return {
-            "status": "error", 
-            "error": str(e)
-        }
-    finally:
-        analyzer.cleanup()
+    fmri_analyzer = NeuralFMRI(model)
+    results = fmri_analyzer.analyze_spatial_patterns(dataloader, max_batches)
+    print("NN-fMRI Validation Results:", results)
+    fmri_analyzer.cleanup()
+    return results
 
 
 if __name__ == "__main__":
@@ -529,3 +509,4 @@ if __name__ == "__main__":
     print("spatial_results = analyzer.analyze_spatial_patterns(dataloader)")
     print("zeta_scores = analyzer.compute_zeta_scores(validation_data)")
     print("report = analyzer.generate_spatial_report()")
+

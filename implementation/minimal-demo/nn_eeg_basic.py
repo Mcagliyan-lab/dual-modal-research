@@ -61,6 +61,7 @@ class ActivationCapture:
                 hook = module.register_forward_hook(create_hook(f"layer_{layer_count}_{name}"))
                 self.hooks.append(hook)
                 layer_count += 1
+                print(f"  Hook registered on: {name} (type: {type(module).__name__})") # Debug print
 
         print(f"Registered hooks on {layer_count} layers")
 
@@ -71,6 +72,7 @@ class ActivationCapture:
         with torch.no_grad():
             _ = self.model(data_batch)
 
+        print(f"  Captured {len(self.activations)} activations for batch") # Debug print
         return dict(self.activations)
 
     def cleanup(self):
@@ -150,7 +152,7 @@ class NeuralEEG:
 
             # Progress indicator
             if batch_count % 10 == 0:
-                print(f"  Processed {batch_count} batches...")
+                print(f"  Processed {batch_count} batches, temporal_data size: {len(temporal_data)}") # Debug print
 
         # Convert lists to numpy arrays
         for layer_name in temporal_data:
@@ -179,13 +181,19 @@ class NeuralEEG:
         frequency_results = {}
 
         for layer_name, temporal_signal in temporal_signals.items():
-            if len(temporal_signal) < 10:  # Skip layers with insufficient data
+            print(f"  Analyzing layer {layer_name}, signal length: {len(temporal_signal)}") # Debug print
+            if len(temporal_signal) < 4:  # Reduced minimum samples to 4 for analysis
+                print(f"  Skipping layer {layer_name}: insufficient data ({len(temporal_signal)} samples)") # Debug print
                 continue
 
             try:
                 # Apply Welch's method for power spectral density
                 nperseg = min(len(temporal_signal) // 4, 16)  # Adaptive window size
                 if nperseg < 4:
+                    nperseg = len(temporal_signal)
+
+                # Ensure nperseg is not larger than temporal_signal length
+                if nperseg > len(temporal_signal):
                     nperseg = len(temporal_signal)
 
                 frequencies, psd = signal.welch(
