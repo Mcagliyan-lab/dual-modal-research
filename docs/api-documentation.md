@@ -23,7 +23,7 @@ Perform frequency domain analysis
 Classify network operational state
 - Returns: State classification ('training', 'inference', 'idle', 'error')
 
-## NN-fMRI Module (Coming Soon)
+## NN-fMRI Module
 
 ### NeuralFMRI Class
 
@@ -42,7 +42,7 @@ Analyze spatial activation patterns
 Compute impact scores for spatial regions
 - Returns: ζ-scores for each grid region
 
-## Integration Module (Coming Soon)
+## Integration Module
 
 ### DualModalIntegrator Class
 
@@ -55,18 +55,22 @@ Initialize dual-modal analyzer
 Complete dual-modal analysis
 - Returns: Comprehensive analysis results
 
+#### `cross_modal_validation(nn_eeg_results, nn_fmri_results)`
+Perform cross-modal validation between NN-EEG and NN-fMRI results
+- Returns: Validation metrics and consistency scores
+
 ## Utility Modules
 
 ### Data Loaders
-- `cifar10_loader()`: CIFAR-10 dataset
-- `mnist_loader()`: MNIST dataset  
-- `synthetic_loader()`: Synthetic test data
+- `create_cifar10_dataloader()`: CIFAR-10 dataset loader
+- `create_mnist_dataloader()`: MNIST dataset loader  
+- `create_synthetic_dataloader()`: Synthetic test data loader
 
 ### Visualization
-- `plot_frequency_analysis()`: NN-EEG results
-- `plot_spatial_grids()`: NN-fMRI results
-- `create_dual_modal_dashboard()`: Combined visualization
+- `plot_frequency_analysis()`: NN-EEG results visualization
+- `plot_spatial_grids()`: NN-fMRI results visualization
+- `create_comprehensive_visualizations()`: Combined visualization dashboard
 
 ### Metrics
-- `DualModalMetrics`: Evaluation metrics
-- `statistical_significance_test()`: Statistical testing
+- `cross_modal_validation()`: Cross-modal consistency evaluation
+- `compute_consistency_score()`: Dual-modal consistency metrics

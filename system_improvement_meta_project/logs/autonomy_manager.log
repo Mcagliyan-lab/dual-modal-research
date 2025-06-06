@@ -1,0 +1,64 @@
+2025-06-06 08:01:34,012 - INFO - Autonomy Manager initialized successfully
+2025-06-06 08:02:06,053 - INFO - Autonomy Manager initialized successfully
+2025-06-06 08:02:06,057 - INFO - Risk assessment: otomatik_gorev_kontrolu.py -> critical (score: 8)
+2025-06-06 08:02:06,058 - INFO - Risk assessment: markdown_linter.py -> critical (score: 8)
+2025-06-06 08:02:06,062 - INFO - Risk assessment: check_dependencies.py -> high (score: 5)
+2025-06-06 08:02:06,063 - INFO - Risk assessment: git_commit_script.py -> high (score: 7)
+2025-06-06 08:02:06,066 - INFO - Autonomy level updated to: low
+2025-06-06 08:02:06,068 - INFO - Autonomy level updated to: medium
+2025-06-06 08:02:06,069 - INFO - Autonomy level updated to: high
+2025-06-06 08:02:06,071 - INFO - Autonomy level updated to: full
+2025-06-06 08:02:06,071 - INFO - Autonomy level updated to: high
+2025-06-06 08:03:04,351 - INFO - Autonomy Manager initialized successfully
+2025-06-06 08:03:04,353 - INFO - Risk assessment: otomatik_gorev_kontrolu.py -> low (score: 1)
+2025-06-06 08:03:04,353 - INFO - Risk assessment: markdown_linter.py -> low (score: 1)
+2025-06-06 08:03:04,353 - INFO - Risk assessment: check_dependencies.py -> medium (score: 3)
+2025-06-06 08:03:04,353 - INFO - Risk assessment: git_commit_script.py -> high (score: 7)
+2025-06-06 08:03:04,365 - INFO - Autonomy level updated to: low
+2025-06-06 08:03:04,367 - INFO - Autonomy level updated to: medium
+2025-06-06 08:03:04,368 - INFO - Autonomy level updated to: high
+2025-06-06 08:03:04,370 - INFO - Autonomy level updated to: full
+2025-06-06 08:03:04,371 - INFO - Autonomy level updated to: high
+2025-06-06 08:03:42,467 - INFO - Autonomy Manager initialized successfully
+2025-06-06 08:03:42,470 - INFO - [f818f4ed] Assessment baþlatýldý: otomatik_gorev_kontrolu.py
+2025-06-06 08:03:42,470 - INFO - Risk assessment: otomatik_gorev_kontrolu.py -> critical (score: 8)
+2025-06-06 08:03:42,470 - INFO - User approval requested for: otomatik_gorev_kontrolu.py
+2025-06-06 08:03:42,474 - INFO - [de802e66] Assessment baþlatýldý: markdown_linter.py
+2025-06-06 08:03:42,474 - INFO - Risk assessment: markdown_linter.py -> critical (score: 8)
+2025-06-06 08:03:42,475 - INFO - User approval requested for: markdown_linter.py
+2025-06-06 08:03:42,476 - INFO - [e6da8c8c] Assessment baþlatýldý: meta_project_guard.py
+2025-06-06 08:03:42,476 - INFO - Risk assessment: meta_project_guard.py -> critical (score: 8)
+2025-06-06 08:03:42,476 - INFO - User approval requested for: meta_project_guard.py
+2025-06-06 08:04:44,864 - INFO - Autonomy Manager initialized successfully
+2025-06-06 08:04:44,864 - INFO - [6e98c471] Assessment baþlatýldý: otomatik_gorev_kontrolu.py
+2025-06-06 08:04:44,879 - DEBUG - Checking operation rules for: otomatik_gorev_kontrolu.py
+2025-06-06 08:04:44,879 - DEBUG - Available rules: ['otomatik_gorev_kontrolu.py', 'meta_project_guard.py', 'markdown_linter.py', 'check_dependencies.py']
+2025-06-06 08:04:44,879 - INFO - Operation rule applied for otomatik_gorev_kontrolu.py: low - Regular monitoring script - safe operation
+2025-06-06 08:04:44,879 - INFO - Risk assessment: otomatik_gorev_kontrolu.py -> critical (score: 8)
+2025-06-06 08:04:44,879 - INFO - User approval requested for: otomatik_gorev_kontrolu.py
+2025-06-06 08:04:44,879 - INFO - [ea21e7ed] Assessment baþlatýldý: markdown_linter.py
+2025-06-06 08:04:44,879 - DEBUG - Checking operation rules for: markdown_linter.py
+2025-06-06 08:04:44,879 - DEBUG - Available rules: ['otomatik_gorev_kontrolu.py', 'meta_project_guard.py', 'markdown_linter.py', 'check_dependencies.py']
+2025-06-06 08:04:44,879 - INFO - Operation rule applied for markdown_linter.py: low - Linting tool - read-only analysis
+2025-06-06 08:04:44,879 - INFO - Risk assessment: markdown_linter.py -> critical (score: 8)
+2025-06-06 08:04:44,879 - INFO - User approval requested for: markdown_linter.py
+2025-06-06 08:04:44,879 - INFO - [d2456e24] Assessment baþlatýldý: meta_project_guard.py
+2025-06-06 08:04:44,879 - DEBUG - Checking operation rules for: meta_project_guard.py
+2025-06-06 08:04:44,879 - DEBUG - Available rules: ['otomatik_gorev_kontrolu.py', 'meta_project_guard.py', 'markdown_linter.py', 'check_dependencies.py']
+2025-06-06 08:04:44,879 - INFO - Operation rule applied for meta_project_guard.py: low - Protection system - autonomous operation required
+2025-06-06 08:04:44,892 - INFO - Risk assessment: meta_project_guard.py -> critical (score: 8)
+2025-06-06 08:04:44,892 - INFO - User approval requested for: meta_project_guard.py
+2025-06-06 08:05:20,045 - INFO - Autonomy Manager initialized successfully
+2025-06-06 08:05:20,046 - INFO - [90e085b8] Assessment baþlatýldý: otomatik_gorev_kontrolu.py
+2025-06-06 08:05:20,047 - INFO - Operation rule override applied for otomatik_gorev_kontrolu.py: low - Regular monitoring script - safe operation
+2025-06-06 08:05:20,047 - INFO - Risk assessment (override): otomatik_gorev_kontrolu.py -> low (score: 1)
+2025-06-06 08:05:20,047 - INFO - Safe execution: otomatik_gorev_kontrolu.py
+2025-06-06 08:05:20,206 - INFO - [9f5857e1] Assessment baþlatýldý: markdown_linter.py
+2025-06-06 08:05:20,206 - INFO - Operation rule override applied for markdown_linter.py: low - Linting tool - read-only analysis
+2025-06-06 08:05:20,206 - INFO - Risk assessment (override): markdown_linter.py -> low (score: 1)
+2025-06-06 08:05:20,207 - INFO - Safe execution: markdown_linter.py
+2025-06-06 08:05:20,322 - INFO - [712336bc] Assessment baþlatýldý: meta_project_guard.py
+2025-06-06 08:05:20,322 - INFO - Operation rule override applied for meta_project_guard.py: low - Protection system - autonomous operation required
+2025-06-06 08:05:20,322 - INFO - Risk assessment (override): meta_project_guard.py -> low (score: 1)
+2025-06-06 08:05:20,322 - INFO - Safe execution: meta_project_guard.py
+2025-06-06 08:08:21,999 - INFO - Autonomy Manager initialized successfully

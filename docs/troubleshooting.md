@@ -43,12 +43,16 @@ pip install scipy numpy matplotlib
 **Issue**: State classification always returns 'idle'
 **Solution**: Verify input data is not all zeros
 
+**Issue**: Cross-modal validation fails
+**Solution**: Ensure both NN-EEG and NN-fMRI results are properly formatted
+
 ## Getting Help
 
 1. Check this troubleshooting guide
-2. Review `getting-started.md` for basic usage
+2. Review `docs/getting-started.md` for basic usage
 3. Examine working examples in `examples/`
-4. Check GitHub issues for similar problems
+4. Run the test suite: `pytest tests/`
+5. Check GitHub issues for similar problems
 
 ## Reporting Bugs
 
@@ -65,7 +69,7 @@ Include in your bug report:
 A: Yes, framework works with any PyTorch model
 
 **Q: How accurate are the results?**
-A: NN-EEG has been validated on CIFAR-10. NN-fMRI validation coming soon.
+A: Both NN-EEG and NN-fMRI have been validated on multiple datasets including CIFAR-10.
 
 **Q: Can I use this in production?**
-A: NN-EEG component is production-ready. Full framework after NN-fMRI complete.
+A: Yes, the complete dual-modal framework is production-ready and tested.

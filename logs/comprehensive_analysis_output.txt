@@ -1,0 +1,71 @@
+Running Comprehensive Dual-Modal Analysis Example
+============================================================
+Registered hooks on 3 layers
+NN-EEG component initialized
+NN-fMRI initialized with grid size (8, 8, 4)
+Model has 5418 parameters
+NN-fMRI component initialized
+Dual-Modal Integrator initialized (Fixed Interface)
+Model: 5,418 parameters
+Grid size: (8, 8, 4)
+Components: EEG=True, fMRI=True
+
+Starting comprehensive analysis...
+Starting comprehensive dual-modal analysis...
+Running temporal analysis...
+Extracting temporal signals from 50 batches...
+  Processed 10 batches...
+  Processed 20 batches...
+Temporal signal extraction completed in 0.05s
+Performing frequency domain analysis...
+   Temporal analysis complete - State: ['layer_0_0: deep_processing', 'layer_1_3: deep_processing', 'layer_2_7: deep_processing']
+Running spatial analysis...
+Starting spatial pattern analysis...
+Processed batch 1/10
+Processed batch 6/10
+Analyzing spatial patterns in 0...
+  _perform_spatial_grid_analysis spatial_stats keys: ['mean_density', 'std_density', 'min_density', 'max_density', 'density_quartiles', 'num_grids_analyzed']
+Analyzing spatial patterns in 3...
+  _perform_spatial_grid_analysis spatial_stats keys: ['mean_density', 'std_density', 'min_density', 'max_density', 'density_quartiles', 'num_grids_analyzed']
+Analyzing spatial patterns in 7...
+  _perform_spatial_grid_analysis spatial_stats keys: ['mean_density', 'std_density', 'min_density', 'max_density', 'density_quartiles', 'num_grids_analyzed']
+Spatial analysis complete. Analyzed 3 layers.
+DEBUG: Spatial patterns keys: dict_keys(['status', 'spatial_patterns'])
+Computing ζ-scores for spatial impact assessment...
+Computing ζ-scores for 0...
+DEBUG (zeta_scores): Layer name: 0, Target module: Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+DEBUG (zeta_scores): Original weights cloned for 0
+DEBUG (zeta_scores): Original bias cloned for 0
+Computing ζ-scores for 3...
+DEBUG (zeta_scores): Layer name: 3, Target module: Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+DEBUG (zeta_scores): Original weights cloned for 3
+DEBUG (zeta_scores): Original bias cloned for 3
+Computing ζ-scores for 7...
+DEBUG (zeta_scores): Layer name: 7, Target module: Linear(in_features=32, out_features=10, bias=True)
+DEBUG (zeta_scores): Original weights cloned for 7
+DEBUG (zeta_scores): Original bias cloned for 7
+ζ-score computation complete for 3 layers.
+   Spatial analysis complete - 2 layers analyzed
+Running cross-modal validation...
+   Cross-modal validation: Excellent (0.92)
+Analysis complete in 0.86s
+
+Comprehensive Analysis Results Summary:
+  Overall Status: N/A
+  Processing Time: 0.86s
+  Cross-Modal Consistency Score: 0.92
+  Validation Level: Excellent
+
+Detailed Cross-Modal Validation Results:
+  temporal_spatial_correlation: 0.75
+  state_agreement_rate: 1.0
+  layer_consistency: 1.0
+  overall_consistency_score: 0.9166666666666666
+  validation_level: Excellent
+NN-EEG analyzer cleanup complete
+NN-fMRI cleanup complete.
+Dual-modal integrator cleanup complete
+
+Cleanup complete.
+============================================================
+Comprehensive Dual-Modal Analysis Example Finished.

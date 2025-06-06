@@ -1,0 +1,9 @@
+{"timestamp": "2025-06-06T08:03:42.470772", "execution_id": "f818f4ed", "script": "otomatik_gorev_kontrolu.py", "risk_level": "critical", "permission": "ask_user", "success": false, "execution_time": 0.001516580581665039}
+{"timestamp": "2025-06-06T08:03:42.475046", "execution_id": "de802e66", "script": "markdown_linter.py", "risk_level": "critical", "permission": "ask_user", "success": false, "execution_time": 0.0009970664978027344}
+{"timestamp": "2025-06-06T08:03:42.476251", "execution_id": "e6da8c8c", "script": "meta_project_guard.py", "risk_level": "critical", "permission": "ask_user", "success": false, "execution_time": 0.0}
+{"timestamp": "2025-06-06T08:04:44.879941", "execution_id": "6e98c471", "script": "otomatik_gorev_kontrolu.py", "risk_level": "critical", "permission": "ask_user", "success": false, "execution_time": 0.015701770782470703}
+{"timestamp": "2025-06-06T08:04:44.879941", "execution_id": "ea21e7ed", "script": "markdown_linter.py", "risk_level": "critical", "permission": "ask_user", "success": false, "execution_time": 0.0}
+{"timestamp": "2025-06-06T08:04:44.892166", "execution_id": "d2456e24", "script": "meta_project_guard.py", "risk_level": "critical", "permission": "ask_user", "success": false, "execution_time": 0.012223958969116211}
+{"timestamp": "2025-06-06T08:05:20.047776", "execution_id": "90e085b8", "script": "otomatik_gorev_kontrolu.py", "risk_level": "low", "permission": "allow", "success": false, "execution_time": 0.15660715103149414}
+{"timestamp": "2025-06-06T08:05:20.207292", "execution_id": "9f5857e1", "script": "markdown_linter.py", "risk_level": "low", "permission": "allow", "success": false, "execution_time": 0.11650514602661133}
+{"timestamp": "2025-06-06T08:05:20.322782", "execution_id": "712336bc", "script": "meta_project_guard.py", "risk_level": "low", "permission": "allow", "success": false, "execution_time": 0.14350414276123047}

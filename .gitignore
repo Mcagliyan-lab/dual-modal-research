@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Distribution / build
+/dist/
+/build/
+/*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data and Results
+data/
+results/
+extended_validation_results/
+*.json
+
+# Specific files
+proje_analiz_raporu.md
+proje_calisma_plani.md
+ai_prompt_for_project_management.md
+ai_session_notes.md
+quick_start_test.sh
+
+# Configuration files (if they are not part of version control)
+config.yaml
+
+# Large files (consider Git LFS)
+*.pth
+*.pt
+*.bin
+*.h5
+*.hdf5
+
+# Other
+*.env 

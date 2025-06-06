@@ -1,0 +1,14 @@
+2025-06-06 08:15:15,474 - INFO - Database initialized successfully
+2025-06-06 08:15:15,478 - INFO - Context Manager initialized successfully
+2025-06-06 08:15:15,561 - INFO - New session created: fc5d5a80d005
+2025-06-06 08:15:15,582 - INFO - Session state saved: fc5d5a80d005
+2025-06-06 08:15:15,582 - INFO - Resume guide exported: context_data\exports\resume_guide_fc5d5a80d005.md
+2025-06-06 08:15:59,660 - INFO - Database initialized successfully
+2025-06-06 08:15:59,660 - INFO - Context Manager initialized successfully
+2025-06-06 08:15:59,712 - INFO - New session created: 7f53c0f231ab
+2025-06-06 08:15:59,746 - INFO - Session state saved: 7f53c0f231ab
+2025-06-06 08:15:59,749 - INFO - Resume guide exported: context_data\exports\resume_guide_7f53c0f231ab.md
+2025-06-06 08:15:59,769 - INFO - Session resumed: 7f53c0f231ab
+2025-06-06 08:15:59,780 - INFO - Database initialized successfully
+2025-06-06 08:15:59,781 - INFO - Context Manager initialized successfully
+2025-06-06 08:15:59,781 - INFO - Session resumed: 7f53c0f231ab

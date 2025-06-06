@@ -1,0 +1,11 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.9.21, pytest-8.3.4, pluggy-1.5.0
+rootdir: C:\source\dual-modal-research
+configfile: pyproject.toml
+collected 15 items
+
+tests\test_integration.py ...                                            [ 20%]
+tests\test_nn_eeg.py .......                                             [ 66%]
+tests\test_nn_fmri.py .....                                              [100%]
+
+============================= 15 passed in 15.91s =============================

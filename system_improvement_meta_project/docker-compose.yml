@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  # Ana YAPYÖS konteyner servisi
+  yapyos-main:
+    build: 
+      context: .
+      target: production
+    container_name: yapyos-system
+    volumes:
+      - ./project_docs:/app/project_docs
+      - ./system_improvement_meta_project:/app/system_improvement_meta_project
+      - ./logs:/app/logs
+      - ./output:/app/output
+    environment:
+      - PYTHONPATH=/app
+      - CONFIG_PATH=/app/project_config.json
+    networks:
+      - yapyos-network
+    restart: unless-stopped
+    command: ["python", "otomatik_gorev_kontrolu.py"]
+
+  # Geliştirme ortamı
+  yapyos-dev:
+    build:
+      context: .
+      target: development
+    container_name: yapyos-dev
+    volumes:
+      - .:/app
+      - /app/.git
+    environment:
+      - PYTHONPATH=/app
+      - DEVELOPMENT=true
+    networks:
+      - yapyos-network
+    ports:
+      - "8000:8000"  # Gelecekteki web arayüzü için
+    command: ["tail", "-f", "/dev/null"]  # Keep container running
+    profiles:
+      - dev
+
+  # Meta-proje analiz servisi
+  yapyos-meta:
+    build:
+      context: .
+      target: production
+    container_name: yapyos-meta-analysis
+    volumes:
+      - ./system_improvement_meta_project:/app/meta_project
+    environment:
+      - PYTHONPATH=/app
+      - CONFIG_PATH=/app/meta_project/project_config.json
+    networks:
+      - yapyos-network
+    command: ["python", "otomatik_gorev_kontrolu.py", "--config", "/app/meta_project/project_config.json"]
+    depends_on:
+      - yapyos-main
+
+  # Bağımlılık kontrolü servisi
+  dependency-checker:
+    build:
+      context: .
+      target: base
+    container_name: yapyos-dependency-checker
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - yapyos-network
+    command: ["python", "-c", "import sys; print('Python dependencies check OK:', sys.version)"]
+
+  # Periyodik görev kontrolü (cron benzeri)
+  yapyos-scheduler:
+    build:
+      context: .
+      target: production
+    container_name: yapyos-scheduler
+    volumes:
+      - ./project_docs:/app/project_docs
+      - ./system_improvement_meta_project:/app/system_improvement_meta_project
+      - ./logs:/app/logs
+    environment:
+      - PYTHONPATH=/app
+      - SCHEDULE_INTERVAL=3600  # 1 saat
+    networks:
+      - yapyos-network
+    restart: unless-stopped
+    command: >
+      sh -c "
+      while true; do
+        echo 'Running scheduled task analysis...'
+        python otomatik_gorev_kontrolu.py
+        echo 'Analysis completed. Sleeping for $$SCHEDULE_INTERVAL seconds...'
+        sleep $$SCHEDULE_INTERVAL
+      done
+      "
+    profiles:
+      - scheduler
+
+networks:
+  yapyos-network:
+    driver: bridge
+
+volumes:
+  yapyos-data:
+    driver: local
+  yapyos-logs:
+    driver: local 

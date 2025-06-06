@@ -1,0 +1,9 @@
+2025-06-06 09:22:22,594 - INFO - Database initialized successfully
+2025-06-06 09:22:22,595 - INFO - Context Manager initialized successfully
+2025-06-06 09:22:22,656 - INFO - New session created: e161c48f080d
+2025-06-06 09:22:22,705 - INFO - Session state saved: e161c48f080d
+2025-06-06 09:22:22,708 - INFO - Resume guide exported: context_data\exports\resume_guide_e161c48f080d.md
+2025-06-06 09:22:22,765 - INFO - Session resumed: e161c48f080d
+2025-06-06 09:22:22,916 - INFO - Database initialized successfully
+2025-06-06 09:22:22,916 - INFO - Context Manager initialized successfully
+2025-06-06 09:22:22,918 - INFO - Session resumed: e161c48f080d
